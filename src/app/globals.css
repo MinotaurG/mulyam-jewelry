@@ -1,26 +1,148 @@
+/**
+ * Global Styles - Mulyam Jewelry
+ * 
+ * This file contains:
+ * 1. Tailwind CSS import
+ * 2. CSS custom properties (variables) for colors
+ * 3. Theme configuration for Tailwind
+ * 4. Base body styles
+ * 
+ * Tailwind v4 uses @theme directive instead of tailwind.config.ts
+ */
+
+/* Import Tailwind CSS base, components, and utilities */
 @import "tailwindcss";
 
+/* ============================================
+   CSS CUSTOM PROPERTIES (Variables)
+   ============================================
+   
+   These define our color palette.
+   Using CSS variables allows easy theme switching
+   and keeps colors consistent across the site.
+   
+   Color Philosophy (Uniqlo-style + Jewelry warmth):
+   - Warm neutrals (not cold blue-grays)
+   - Soft backgrounds (not harsh white)
+   - Gold accents (jewelry connection)
+   - Clean, minimal feel
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- Background Colors ---- */
+  --background: #FAFAF9;        /* Warm off-white (stone-50) */
+  --background-secondary: #F5F5F4;  /* Slightly darker for sections */
+  --foreground: #1C1917;        /* Warm black for text (stone-900) */
+
+  /* ---- Brand Colors ---- */
+  --brand-primary: #D97706;     /* Warm amber/gold (amber-600) */
+  --brand-primary-light: #F59E0B;  /* Lighter amber for hover */
+  --brand-primary-dark: #B45309;   /* Darker amber for active */
+  
+  /* ---- Neutral Colors (Warm Stone Palette) ---- */
+  --neutral-50: #FAFAF9;
+  --neutral-100: #F5F5F4;
+  --neutral-200: #E7E5E4;
+  --neutral-300: #D6D3D1;
+  --neutral-400: #A8A29E;
+  --neutral-500: #78716C;
+  --neutral-600: #57534E;
+  --neutral-700: #44403C;
+  --neutral-800: #292524;
+  --neutral-900: #1C1917;
+
+  /* ---- Accent Color (For Pet Collection Pop) ---- */
+  --accent: #E11D48;            /* Rose-600 - eye-catching for pets */
+  --accent-light: #FB7185;      /* Rose-400 */
+
+  /* ---- Utility Colors ---- */
+  --success: #16A34A;           /* Green for success states */
+  --error: #DC2626;             /* Red for errors */
 }
 
+/* ============================================
+   TAILWIND THEME CONFIGURATION
+   ============================================
+   
+   @theme tells Tailwind about our custom values.
+   This makes them available as utility classes:
+   
+   --color-brand  →  bg-brand, text-brand, border-brand
+   --font-sans    →  font-sans
+*/
+
 @theme inline {
+  /* Map CSS variables to Tailwind color utilities */
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  
+  /* Brand colors - usage: bg-brand, text-brand, etc. */
+  --color-brand: var(--brand-primary);
+  --color-brand-light: var(--brand-primary-light);
+  --color-brand-dark: var(--brand-primary-dark);
+  
+  /* Accent color - usage: bg-accent, text-accent */
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+
+  /* Font families */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
+
+/* ============================================
+   DARK MODE COLORS (Optional - For Future)
+   ============================================
+   
+   Automatically applies when user's system is in dark mode.
+   We'll keep it simple for now - can enhance later.
+
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --background-secondary: #171717;
+    --foreground: #FAFAF9;
   }
+}
+*/
+
+/* ============================================
+   BASE STYLES
+   ============================================
+   
+   Applied to the entire document.
+*/
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================
+   
+   Custom utilities not provided by Tailwind.
+*/
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
