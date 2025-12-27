@@ -9,6 +9,9 @@
  * - Metadata for SEO
  */
 
+// Import vercel Analytics
+import { Analytics } from '@vercel/analytics/next';
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -69,6 +72,7 @@ export default function RootLayout({
 
         {/* Footer - appears on all pages */}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
